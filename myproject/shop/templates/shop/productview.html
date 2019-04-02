@@ -1,0 +1,79 @@
+{% extends 'shop/basic.html' %}
+{% block title%}<title> {{product.product_name}} - Joker Friend Shop </title>{% endblock %}
+{% block style%}
+<style>
+.card-img-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+}
+</style>
+{% endblock %}
+{% block body %}
+<!--
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+<div class="modal-content">
+<div class="container my-4">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="row ">
+        <div class="col-md-4">
+            <div class="row card" style="width: 16rem;">
+                <img class="card-img-top" src="/media/{{product.image}}">
+            </div>
+        </div>
+        <div class="col-md-8 my-3 ">
+            <h5  id="namepr{{product.id}}">{{product.product_name}}</h5>
+            <p>{{product.desc}}</p>
+            <p><b>&#x20B9;{{product.price}} </b></p>
+            <div class="row">
+                <button class="btn btn-info mx-3">Buy Now</button>
+                <span id="divpr{{product.id}}" class="divpr">
+                    <a id="pr{{product.id}}" class="btn btn-warning cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart feather-lg text-primary">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        Add To Cart</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+-->
+<button  style="font-size: 11px" class="btn btn-warning cart" data-toggle="modal" data-target="#mymodal7">QuickView</button>
+<div id="mymodal7" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="container my-4">
+                                    <button type="button" class="close" data-dismiss="modal">×</button>
+                                    <div class="row ">
+                                        <div class="col-md-4">
+                                            <div class="row card" style="width: 16rem;">
+                                                <img class="card-img-top" src="/media/shop/images/1675312_1.jpg">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 my-3 ">
+                                            <h5 id="namepr7">Moody (Mo-O-Dy) Periodic Elements Spelling T-Shirt</h5>
+                                            <p></p>
+                                            <p><b>₹499 </b></p>
+                                            <div class="row">
+                                                <span id="divpr7" class="divpr">
+                                                    <button id="pr7" class="btn btn-info cart" style="font-size: 11px">Add To Cart</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+{% endblock %}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=1024">
+    {% block meta %} {% endblock %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% block title %} {% endblock %}
+    <style>
+        .pmmm
+    {
+      font-size: 75%;
+      line-height: 11px;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+
+      .nav-link {
+  
+  padding: .5rem 1rem;
+    }
+   
+
+    </style>
+    {% block style %}{% endblock %}
+    {% block hscript %}{% endblock %}
+</head>
+
+<body>
+    <!-- NAVIGATION BAR 1-->
+    <span class="pmmm">
+        <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #212529">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/">Joker Friend</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/capitalize">Capitalize</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop/contact">Chat</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </span>
+    <!-- NAVIGATION BAR 1-->
+    <!-- NAVIGATION BAR 2-->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:#ffffffe6;">
+        <div class="container-fluid"><a href="/shop" class="navbar-brand">Joker Friend Shop</a>
+            <div class="d-flex ml-auto">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#globalNavbar" aria-controls="globalNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <form class="form-inline form-navbar my-2 my-lg-0 order-2" action="#">
+                    <input class="form-control" name="ss" type="text" placeholder="Search Products">
+                </form>
+                <ul class="navbar-nav mr-auto order-1">
+                    <li class="nav-item dropdown "><a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Categories</a>
+                        <div class="dropdown-menu">
+                            <div class="navbar-collapse navbar-top-collapse">
+                                <ul class="nav navbar-nav">
+                                    {% for x in category %}
+                                    <li class=" dropdown-item"><a class="nav-link" href="/shop/{{x.category}}">{{x.category}}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/shop/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shop/contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/shop/tracker">Track Your Orders</a></li>
+                </ul>
+                <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
+                    <li class="nav-item "><a class="nav-link">
+                            <button type="button" class="btn btn-warning" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="">Cart
+                                <span class="badge badge-light" id="cart">0</span>
+                            </button></a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link"><button onclick='clearCart()' type="button" class="btn btn-info">Clear Cart</button></a></li>
+                </ul>
+                <ul class="navbar-nav d-lg-none">
+                    <li class="nav-item-divider"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVIGATION BAR 2-->
+    {% block body %} {% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+    // Find out the cart items from localStorage
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        updateCart(cart);
+    }
+    // If the add to cart button is clicked, add/increment the item
+    //$('.cart').click(function() {
+    $('.divpr').on('click', 'button.cart', function() {
+        var idstr = this.id.toString();
+        if (cart[idstr] != undefined) {
+            cart[idstr] = cart[idstr] + 1;
+        } else {
+            cart[idstr] = 1;
+        }
+        updateCart(cart);
+    });
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+
+    function updatePopover(cart) {
+        console.log('We are inside updatePopover');
+        var popStr = "";
+        popStr = popStr + "<h5> Cart Items </h5><div class='mx-2 my-2'>";
+        var i = 1;
+        for (var item in cart) {
+            popStr = popStr + "<b>" + i + "</b>. ";
+            popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item] + '<br>';
+            i = i + 1;
+        }
+        popStr = popStr + "</div> <a href='/shop/checkout'><span class='btn btn-info' id ='checkout'>Checkout</span></a>"
+        console.log(popStr);
+        document.getElementById('popcart').setAttribute('data-content', popStr);
+        $('#popcart').popover('show');
+    }
+
+    function clearCart() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        for (var item in cart) {
+            document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-info cart" style="font-size: 11px">Add To Cart</button>'
+        }
+        localStorage.clear();
+        cart = {};
+        updateCart(cart);
+    }
+
+    function updateCart(cart) {
+        var sum = 0;
+        for (var item in cart) {
+            sum = sum + cart[item];
+            document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-info minus'>-</button> <span id='val" + item + "''>" + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-info plus'> + </button>";
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('cart').innerHTML = sum;
+        console.log(cart);
+        updatePopover(cart);
+    }
+    // If plus or minus button is clicked, change the cart as well as the display value
+    $('.divpr').on("click", "button.minus", function() {
+        a = this.id.slice(7, );
+        cart['pr' + a] = cart['pr' + a] - 1;
+        cart['pr' + a] = Math.max(0, cart['pr' + a]);
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a];
+        updateCart(cart);
+    });
+    $('.divpr').on("click", "button.plus", function() {
+        a = this.id.slice(6, );
+        cart['pr' + a] = cart['pr' + a] + 1;
+        document.getElementById('valpr' + a).innerHTML = cart['pr' + a];
+        updateCart(cart);
+    });
+    </script>
+    {% block javascript %} {% endblock %}
+</body>
+
+</html>

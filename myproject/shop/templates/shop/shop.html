@@ -1,0 +1,164 @@
+{% extends 'shop/basic.html' %}
+{% block title %}<title>Shop</title>{% endblock %}
+{% block style %}
+<style>
+    .col-md-3 {
+    display: inline-block;
+    margin-left: -4px;
+}
+
+.carousel-indicators .active {
+    background-color: black;
+
+}
+
+.col-md-3 img {
+
+    max-width: 355px;
+    max-height: 355px;
+
+}
+
+body .carousel-indicator li {
+    background-color: black;
+
+}
+
+body .carousel-indicators {
+    bottom: 0;
+    top: 102%;
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon {
+    background-color: black;
+
+}
+
+body .no-padding {
+    padding-left: 0,
+        padding-right: 0;
+}
+
+.desc {
+    font-size: 10px;
+}
+
+.tit {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.head {
+    text-align: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: auto;
+    bottom: auto;
+    padding-top: 222px;
+}
+
+.card-img-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+}
+
+.row {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.head {
+    padding-top: 20px;
+}
+</style>
+{% endblock %}
+{% load static %}
+{% block body %}
+<div class="container-fluid ">
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides, n in allProds %}
+    <h1 class="head my-4">{{product.0.category}}</h1>
+    <h5 class="head">Total {{n}} {{product.0.category}}</h5>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3 " data-ride="carousel">
+            <ul class="carousel-indicators mb-4 ">
+                <li style="background-color: #aaa" data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active "></li>
+                {% for i in range %}
+                <li style="background-color: #aaa" data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+            <!--Slideshow starts here -->
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for i in product %}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" style="width: 16rem;">
+                            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+                            <div class="card-body" style="background-color:#fff3cd">
+                                <h5 class="card-title tit" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                <h6><span class=" badge badge-warning">&#8377; {{i.price}}/-</span></h6>
+                                <p class="card-text desc">{{i.desc|slice:"0:53"}}...</p>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <button id="pr{{i.id}}" class="btn btn-info cart" style="font-size: 11px">Add To Cart</button>
+                                </span>
+                                <a><button id="qv{{i.id}}" style="font-size: 11px" class="btn btn-warning cart" data-toggle="modal" data-target="#mymodal{{i.id}}">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    <!--modal content window starts here -->
+                    <div id="mymodal{{i.id}}" class="modal fade" role="dialog">
+                        <div class="modal-dialog" style="max-width: 100%;">
+                            <div class="modal-content container">
+                                <div class="container my-4">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row ">
+                                        <div class="col-md-4">
+                                            <div class="row card" style="width: 16rem;">
+                                                <img class="card-img-top" src="/media/{{i.image}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 my-3 ">
+                                            <h5 id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                            <p>{{i.desc}}</p>
+                                            <p><b>&#x20B9;{{i.price}} </b></p>
+                                            <div class="row">
+                                                <span id="divpr{{i.id}}" class="divpr">
+                                                    <button id="pr{{i.id}}" class="btn btn-info cart" style="font-size: 11px">Add To Cart</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal Content Window ends here -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span class="btn btn-warning carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+            <span class="btn btn-warning carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

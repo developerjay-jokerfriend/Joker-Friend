@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block meta %} {% endblock %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% block title %} {% endblock %}
+    {% block style %}{% endblock %}
+</head>
+
+<body>
+    <!-- NAVIGATION BAR 1-->
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #212529">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">Joker Friend</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/capitalize">Capitalize</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/shop">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/">Chat</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- NAVIGATION BAR 1-->
+    <!-- NAVIGATION BAR 2
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #fff3cd;>
+          <div class="container"><a href="http://127.0.0.1:8000/" class="navbar-brand">Joker Friend Shop</a>
+            <div class="d-flex ml-auto">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#globalNavbar" aria-controls="globalNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="globalNavbar">
+              <form class="form-inline form-navbar my-2 my-lg-0 order-2" action="#">
+                <input class="form-control" name="s" type="text" placeholder="Search Products">
+              </form>
+              <ul class="navbar-nav mr-auto order-1">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Categories</a>
+                  <div class="dropdown-menu">
+                    <div class="navbar-collapse navbar-top-collapse">
+                      <ul  class="nav navbar-nav">
+                        <li  class=" dropdown-item" style=""><a class="nav-link" href="#">Posters</a></li>
+                        <li  class=" dropdown-item"><a class="nav-link" href="#">Tshirts</a></li>
+                      </ul>
+                  </div>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                                  <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                              </ul>
+                              <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
+                                    <li class="nav-item "><a class="nav-link" href="#"> <button type="button" class="btn btn-warning">Cart <span class="badge badge-light" id="cart">0</span></button></a></li>
+                  <li class="nav-item"><a class="nav-link" href="#"><button type="button" class="btn btn-warning">Checkout</button></a></li>
+                </ul>
+                <ul class="navbar-nav d-lg-none">
+                  <li class="nav-item-divider"></li>
+                                </ul>
+                          </div>
+          </div>
+         
+        </nav>
+-->
+    <!-- NAVIGATION BAR 2-->
+    {% block body %} {% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    {% block javascript %} {% endblock %}
+</body>
+
+</html>

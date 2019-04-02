@@ -1,0 +1,17 @@
+{% extends 'basic.html' %}
+{% block title %}<title>Capitalize</title>{% endblock %}
+{% block body%}
+<div class="container">
+    <form method="post" action="/resultcaps/">
+        {% csrf_token %}
+        <!--post request success karwa mate -->
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">
+                <h1>Enter your text:</h1>
+            </label>
+            <textarea name='caps' class="form-control border border-warning" id="exampleFormControlTextarea1" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-warning">Capitalize</button>
+    </form>
+</div>
+{% endblock %}
