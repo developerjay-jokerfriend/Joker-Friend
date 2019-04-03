@@ -1,13 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Product, Contact, Orders
+from .models import Product, Contact, Orders, OrderUpdate
 from math import ceil
-# import the logging library
-import logging
 
-# Get an instance of a logger
-logger = logging.getLogger(__name__)
-# Create your views here.
+import json
+
+
+
 
 # Create your views here.
 def index(request):
@@ -57,7 +56,32 @@ def contact(request):
 	return render(request, 'shop/contact.html', dic)
 
 def tracker(request):
-	return render(request, 'shop/tracker.html')
+	category = []
+	c = Product.objects.values('category')
+	for x in c:
+		if(x not in category):
+			category.append(x)
+	dic={'category':category,}
+
+	if request.method=="POST":
+		orderId = request.POST.get('orderId', '')
+		email = request.POST.get('email', '')
+		try:
+			order = Orders.objects.filter(order_id=orderId, email=email)
+			if len(order)>0:
+				update = OrderUpdate.objects.filter(order_id=orderId)
+				updates = []
+				for item in update:
+					updates.append({'text': item.update_desc, 'time': item.timestamp})
+					response = json.dumps(updates, default=str)
+				return HttpResponse(response, dic)
+			else:
+				return HttpResponse('{}', dic)
+		except Exception as e:
+			return HttpResponse('{}', dic)
+	return render(request, 'shop/tracker.html', dic)
+
+
 
 def search(request):
 	return render(request, 'shop/search.html')
@@ -83,6 +107,8 @@ def checkout(request):
 		order = Orders(items_json=items_json, name=name, email=email, address=address, city=city,
 			state=state, pincode=pincode, phone=phone)
 		order.save()
+		update = OrderUpdate(order_id=order.order_id, update_desc="The order has been placed.")
+		update.save()
 		thank = True
 		idd = order.order_id
 		return render(request, 'shop/checkout.html', {'thank':thank, 'id': idd, 'category': category})
