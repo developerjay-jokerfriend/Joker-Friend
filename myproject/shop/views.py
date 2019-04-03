@@ -1,8 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Product, Contact
+from .models import Product, Contact, Orders
 from math import ceil
 # import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+# Create your views here.
 
 # Create your views here.
 def index(request):
@@ -60,4 +65,25 @@ def search(request):
 
 
 def checkout(request):
-	return render(request, 'shop/checkout.html')
+	category = []
+	c = Product.objects.values('category')
+	for x in c:
+		if(x not in category):
+			category.append(x)
+
+	if request.method=="POST":
+		items_json = request.POST.get('itemsJson', '')
+		name = request.POST.get('name', '')
+		email = request.POST.get('email', '')
+		address = request.POST.get('address1', '') + " " + request.POST.get('address2', '')
+		city = request.POST.get('city', '')
+		state = request.POST.get('state', '')
+		pincode = request.POST.get('pincode', '')
+		phone = request.POST.get('phone', '')
+		order = Orders(items_json=items_json, name=name, email=email, address=address, city=city,
+			state=state, pincode=pincode, phone=phone)
+		order.save()
+		thank = True
+		idd = order.order_id
+		return render(request, 'shop/checkout.html', {'thank':thank, 'id': idd, 'category': category})
+	return render(request, 'shop/checkout.html',{'category': category})
