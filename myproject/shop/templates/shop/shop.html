@@ -132,7 +132,12 @@ body .no-padding {
                             <img src='/media/{{i.image}}' class=" card-img-top" alt="...">
                             <div class="card-body" style="background-color:#fff3cd">
                                 <h5 class="card-title tit" id="namepr{{i.id}}">{{i.product_name}}</h5>
-                                <h6><span class=" badge badge-warning grow">&#8377; {{i.price}}/-</span></h6>
+                                <h6 class=" badge badge-warning grow">
+                                    <span>&#8377;</span>
+                                    <span id="pricepr{{i.id}}">{{i.price}}
+                                    </span>
+                                    <span>/-</span>
+                                </h6>
                                 <p class="card-text desc">{{i.desc|slice:"0:53"}}...</p>
                                 <span id="divpr{{i.id}}" class="divpr">
                                     <button id="pr{{i.id}}" class="btn btn-info cart grow" style="font-size: 11px">Add To Cart</button>
@@ -160,7 +165,11 @@ body .no-padding {
                                         <div class="col-md-8 my-3 ">
                                             <h5 id="namepr{{i.id}}">{{i.product_name}}</h5>
                                             <p>{{i.desc}}</p>
-                                            <p><b>&#x20B9;{{i.price}} </b></p>
+                                            <p class=" badge badge-warning grow"><span><b>&#8377;</b></span>
+                                                <b><span id="pricepr{{i.id}}">{{i.price}}
+                                                    </span></b>
+                                                <b><span>/-</span></b>
+                                            </p>
                                             <div class="row">
                                                 <span id="divpr{{i.id}}" class="divpr">
                                                     <button id="pr{{i.id}}" class="btn btn-info cart grow" style="font-size: 11px">Add To Cart</button>
@@ -238,4 +247,9 @@ body .no-padding {
 </div>
 {% endfor %}
 </div>
+{% endblock %}
+
+{% block javascript %}
+
+
 {% endblock %}
