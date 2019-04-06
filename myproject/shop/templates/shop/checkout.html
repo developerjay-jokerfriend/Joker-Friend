@@ -18,6 +18,7 @@
         <h2>Step 2 - Enter Address & Other Details:</h2>
         <form method="post" action="/shop/checkout/">{% csrf_token %}
             <input type="hidden" name="itemsJson" id="itemsJson">
+            <input type="hidden" name="amount" id="amount">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputname">Name</label>
@@ -82,7 +83,7 @@ if ($.isEmptyObject(cart)) {
         totalPrice = totalPrice + qty* itemPrice;
         mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
                     ${name}
-                    <span class="badge badge-info badge-pill">Qty: ${qty}</span>
+                    <span class="badge badge-info badge-pill">Qty: ${qty} x &#8377; ${itemPrice}</span>
                 </li>`
         $('#items').append(mystr);
     }

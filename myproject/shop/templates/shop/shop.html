@@ -113,7 +113,9 @@ body .no-padding {
 <div class="container-fluid ">
     <!--Slideshow starts here -->
     {% for product, range, nSlides, n in allProds %}
-    <h1 class="head my-4">{{product.0.category}}</h1>
+    <div id="{{product.0.category}}" class="mt-4"></div>
+    <h1 class="head">{{product.0.category}}</h1>
+
     <h5 class="head">Total {{n}} {{product.0.category}}</h5>
     <div class="row">
         <div id="demo{{forloop.counter}}" class="col carousel slide my-3 " data-ride="carousel">

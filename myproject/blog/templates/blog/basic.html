@@ -9,7 +9,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% block title %} {% endblock %}
+    <style>
+        .growg{ transition: all .2s ease-in-out; }
+    .growg:hover { 
+    transform: scale(1.1);
+    }
+    </style>
     {% block style %}{% endblock %}
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2"></script>
 </head>
 
 <body>
@@ -39,45 +46,6 @@
             </ul>
         </div>
     </nav>
-    <!-- NAVIGATION BAR 1-->
-    <!-- NAVIGATION BAR 2
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #fff3cd;>
-          <div class="container"><a href="http://127.0.0.1:8000/" class="navbar-brand">Joker Friend Shop</a>
-            <div class="d-flex ml-auto">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#globalNavbar" aria-controls="globalNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            </div>
-            <div class="collapse navbar-collapse" id="globalNavbar">
-              <form class="form-inline form-navbar my-2 my-lg-0 order-2" action="#">
-                <input class="form-control" name="s" type="text" placeholder="Search Products">
-              </form>
-              <ul class="navbar-nav mr-auto order-1">
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Categories</a>
-                  <div class="dropdown-menu">
-                    <div class="navbar-collapse navbar-top-collapse">
-                      <ul  class="nav navbar-nav">
-                        <li  class=" dropdown-item" style=""><a class="nav-link" href="#">Posters</a></li>
-                        <li  class=" dropdown-item"><a class="nav-link" href="#">Tshirts</a></li>
-                      </ul>
-                  </div>
-                    </div>
-                </li>
-
-                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                                  <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                                              </ul>
-                              <ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
-                                    <li class="nav-item "><a class="nav-link" href="#"> <button type="button" class="btn btn-warning">Cart <span class="badge badge-light" id="cart">0</span></button></a></li>
-                  <li class="nav-item"><a class="nav-link" href="#"><button type="button" class="btn btn-warning">Checkout</button></a></li>
-                </ul>
-                <ul class="navbar-nav d-lg-none">
-                  <li class="nav-item-divider"></li>
-                                </ul>
-                          </div>
-          </div>
-         
-        </nav>
--->
-    <!-- NAVIGATION BAR 2-->
     {% block body %} {% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

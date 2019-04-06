@@ -9,5 +9,5 @@ urlpatterns = [
     path('tracker/', views.tracker, name='TrackingStatus'),
     path('search/', views.search, name='Search'),
     path('checkout/', views.checkout, name='Checkout'),
-   
+    path("handlerequest/", views.handlerequest, name="HandleRequest"),
 ]
