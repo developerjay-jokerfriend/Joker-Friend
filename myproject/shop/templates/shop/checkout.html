@@ -1,5 +1,15 @@
 {% extends 'shop/basic.html' %}
 {% block title%}<title>Checkout - Joker Friend Shop</title> {% endblock %}
+{% block cartmenu %}
+<ul class="navbar-nav d-none d-lg-flex ml-2 order-3">
+    <li class="nav-item "><a class="nav-link">
+            <button type="button" class="btn btn-warning" id="popcart" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="">Cart
+                <span class="badge badge-light" id="cart">0</span>
+            </button></a>
+    </li>
+    <!--<li class="nav-item"><a class="nav-link"><button onclick='clearCart()' type="button" class="btn btn-info">Clear Cart</button></a></li> -->
+</ul>
+{% endblock %}
 {% block body %}
 <div class="container">
     <div class="col my-4">

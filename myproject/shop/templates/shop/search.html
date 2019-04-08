@@ -1,0 +1,257 @@
+{% extends 'shop/basic.html' %}
+{% block title %}<title>Search</title>{% endblock %}
+{% block style %}
+<style>
+    .col-md-3 {
+    display: inline-block;
+    margin-left: -4px;
+}
+
+.carousel-indicators .active {
+    background-color: black;
+
+}
+
+.col-md-3 img {
+
+    max-width: 355px;
+    max-height: 355px;
+
+}
+
+body .carousel-indicator li {
+    background-color: black;
+
+}
+
+body .carousel-indicators {
+    bottom: 0;
+    top: 102%;
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+
+}
+
+body .carousel-control-prev-icon,
+body .carousel-control-next-icon {
+    background-color: black;
+
+}
+
+body .no-padding {
+    padding-left: 0,
+        padding-right: 0;
+}
+
+.desc {
+    font-size: 10px;
+}
+
+.tit {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.head {
+    text-align: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: auto;
+    bottom: auto;
+    padding-top: 222px;
+}
+
+.card-img-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+}
+
+.row {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.head {
+    padding-top: 20px;
+}
+
+.groww { transition: all .2s ease-in-out; }
+.groww:hover { 
+    transform: scale(1.5); 
+    z-index: 99;
+    padding-top: 100px;
+    padding-left: 250px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.growi { transition: all .2s ease-in-out; }
+.growi:hover { 
+    transform: scale(1.1);
+    padding-top: 100px;
+}
+
+.grow{ transition: all .2s ease-in-out; }
+.grow:hover { 
+    transform: scale(1.1);
+}
+
+.growb{ transition: all .2s ease-in-out; }
+.growb:hover { 
+    transform: scale(1.3);
+}
+
+
+</style>
+{% endblock %}
+{% load static %}
+{% block body %}
+<div class="container-fluid ">
+    <!--Slideshow starts here -->
+    {% for product, range, nSlides, n in allProds %}
+    <div id="{{product.0.category}}" class="mt-4"></div>
+    <h1 class="head">{{product.0.category}}</h1>
+
+    <h5 class="head">Total {{n}} {{product.0.category}}</h5>
+    <div class="row">
+        <div id="demo{{forloop.counter}}" class="col carousel slide my-3 " data-ride="carousel">
+            <ul class="carousel-indicators mb-4 growb ">
+                <li style="background-color: #aaa" data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active "></li>
+                {% for i in range %}
+                <li style="background-color: #aaa" data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ul>
+            <!--Slideshow starts here -->
+            <div class="container carousel-inner no-padding">
+                <div class="carousel-item active">
+                    {% for i in product %}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="card" style="width: 16rem;">
+                            <img src='/media/{{i.image}}' class=" card-img-top" alt="...">
+                            <div class="card-body" style="background-color:#fff3cd">
+                                <h5 class="card-title tit" id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                <h6 class=" badge badge-warning grow">
+                                    <span>&#8377;</span>
+                                    <span id="pricepr{{i.id}}">{{i.price}}
+                                    </span>
+                                    <span>/-</span>
+                                </h6>
+                                <p class="card-text desc">{{i.desc|slice:"0:53"}}...</p>
+                                <span id="divpr{{i.id}}" class="divpr">
+                                    <button id="pr{{i.id}}" class="btn btn-info cart grow" style="font-size: 11px">Add To Cart</button>
+                                </span>
+                                <a><button id="qv{{i.id}}" style="font-size: 11px" class="btn btn-warning cart grow" data-toggle="modal" data-target="#mymodal{{i.id}}">QuickView</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+                <div class="carousel-item">
+                    {% endif %}
+                    <!--modal content window starts here -->
+                    <div id="mymodal{{i.id}}" class="modal fade" role="dialog">
+                        <div class="modal-dialog" style="max-width: 100%;">
+                            <div class="modal-content container">
+                                <div class="container my-4">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <div class="row ">
+                                        <div class="col-md-4 groww">
+                                            <div class="row card " style="width: 16rem;">
+                                                <img class="card-img-top " src="/media/{{i.image}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 my-3 ">
+                                            <h5 id="namepr{{i.id}}">{{i.product_name}}</h5>
+                                            <p>{{i.desc}}</p>
+                                            <p class=" badge badge-warning grow"><span>&#8377;</b></span>
+                                                <span id="pricepr{{i.id}}">{{i.price}}
+                                                    </span></b>
+                                                <b><span>/-</span></b>
+                                            </p>
+                                            <div class="row">
+                                                <span id="divpr{{i.id}}" class="divpr">
+                                                    <button id="pr{{i.id}}" class="btn btn-info cart grow" style="font-size: 11px">Add To Cart</button>
+                                                </span>
+                                            </div>
+                                            <div class="table-responsive my-3">
+                                                <table class="table table-hover table-sm">
+                                                    <tr>
+                                                        <td><b>Product ID</b></td>
+                                                        <td>{{i.id}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Category</b></td>
+                                                        <td>{{i.category}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Artwork By</b></td>
+                                                        <td>{{i.artist}}</td>
+                                                    </tr>
+                                                    {% if i.category == 'Posters' %}
+                                                    <tr>
+                                                        <td><b>Poster Size</b></td>
+                                                        <td>12x18"(inches)</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Poster Material</b></td>
+                                                        <td>Paper Sticker - Ready to stick anywhere you like.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Framed</b></td>
+                                                        <td>NO</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Paper Quality</b></td>
+                                                        <td>Best quality paper sticker posters with brilliant
+                                                            color quality </td>
+                                                    </tr>
+                                                    {% endif %}
+                                                    {% if i.category == 'Tshirts' %}
+                                                    <tr>
+                                                        <td><b>Tshirt Material</b></td>
+                                                        <td>Finest Cotton</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Tshirt Color</b></td>
+                                                        <td>As shown in image</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Tshirt Quality</b></td>
+                                                        <td>Best available in market with brilliant print quality</td>
+                                                    </tr>
+                                                    {% endif %}
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="badge badge-warning" data-dismiss="modal" style="float: right;">&times; close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal Content Window ends here -->
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- left and right controls for the slide -->
+        <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+            <span class="btn btn-warning carousel-control-prev-icon growi"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+            <span class="btn btn-warning carousel-control-next-icon growi"></span>
+        </a>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
+
+{% block javascript %}
+
+
+{% endblock %}
