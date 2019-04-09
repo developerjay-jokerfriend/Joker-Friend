@@ -1,31 +1,33 @@
 {% extends 'jokerfriend/basic.html' %}
 {% load staticfiles %}
 {% block title %}<title>Joker Friend: A Virtual Friend</title>{% endblock %}
+<% block style %> 
 
+<% endblock %>
 
 {% block body%}
 
-    <div class="container">
-        <div class="jumbotron mt-1">
-            <h1 class="jumbotron-heading text-xs-center">Joker Friend : A Virtual Friend</h1>
-            <p class="lead text-xs-center">
+    
+        <div class="container">
+            <h1 class="jumbotron-heading text-center my-3">Joker Friend : A Virtual Friend</h1>
+            <p class="lead text-center">
                 Chat with Joker Friend and make your day awesome!
             </p>
-            <hr class="my-2">
+            
             <div class="row">
-                <div class="col-xs-6 offset-xs-3">
-                    <ul class="list-group chat-log js-chat-log">
+                <div class="col-sm-12 offset-xs-3">
+                    <ul class="list-group chat-log js-chat-log" style="max-height:368px;">
                     </ul>
-                    <div class="input-group input-group-lg mt-1">
-                        <input type="text" class="form-control js-text" placeholder="Type something to begin..." />
+                    <div class=" container input-group input-group-lg my-3 fixed-bottom">
+                        <input type="text" class="form-control mr-2 js-text" placeholder="Type something to begin..." />
                         <span class="input-group-btn">
-                            <button class="btn btn-primary js-say">Submit</button>
+                            <button class="btn btn-warning js-say" style="padding: .650rem 1.75rem;">Submit</button>
                         </span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 
 {% endblock %}
 
