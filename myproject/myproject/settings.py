@@ -39,8 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+
+    'chatterbot.ext.django_chatterbot',
+    'jokerfriend',
     
 ]
+
+# ChatterBot settings
+
+CHATTERBOT = {
+    'name': 'Joker Friend',
+    'logic_adapters': [
+        'chatterbot.logic.MathematicalEvaluation',
+        'chatterbot.logic.BestMatch',
+        'chatterbot.logic.UnitConversion'
+    ],
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'training_data': [
+         'chatterbot.corpus.english'
+    ]
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

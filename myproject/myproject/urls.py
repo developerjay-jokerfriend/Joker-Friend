@@ -26,5 +26,6 @@ urlpatterns = [
     path('resultcaps/', views.resultcaps, name='resultcaps'),
     path('shop/',include('shop.urls')),
     path('blog/', include('blog.urls')),
+    path('jokerfriend/', include('jokerfriend.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #custom import for storing images to media folder.
 
