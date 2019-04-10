@@ -1,9 +1,13 @@
 /* Alternate the background color of the output rows */
 .list-group-item:nth-child(even) {
-    background-color: #f0ad4e;
+    color: #856404;
+	background-color: #fff3cd;
+	border-color: #ffeeba;
 }
 
 .chat-log {
     max-height:368px;
     overflow-y:scroll;
 }
+
+

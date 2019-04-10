@@ -13,13 +13,24 @@
     <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
     {% block title %} {% endblock %}
     <style>
-        .growg{ transition: all .2s ease-in-out; }
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px;
+  border: 1px solid;
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+ .growg{ transition: all .2s ease-in-out; }
     .growg:hover { 
     transform: scale(1.1);
     }
-    </style>
-    {% block style %}{% endblock %}
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2"></script>
+</style>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2"></script>
 </head>
 
 <body>
