@@ -10,5 +10,6 @@ Anyone  who  wants  to  talk  about whatever  is  on  their  mind  can  quickly 
 They give  you the space you need to help you clear  your head.  All these needs are meet by Joker Friend –A Virtual Friend.
 
 PYTHON
-DJANGO 
+DJANGO
+CHATTERBOT
 HTML / CSS / JS
