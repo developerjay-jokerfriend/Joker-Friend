@@ -1,4 +1,4 @@
-# jokerfriend
+# JOKER FRIEND
 Bachelor of Engineering (BE) - Final year project - JOKER  FRIEND:  A  VIRTUAL FRIEND
 
 AI DEEP LEARNING CHATBOT with ECOMMERCE SHOPING 
